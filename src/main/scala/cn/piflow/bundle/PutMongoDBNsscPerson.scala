@@ -2,6 +2,10 @@ package cn.piflow.bundle
 
 import java.util
 
+import cn.piflow.conf.bean.PropertyDescriptor
+import cn.piflow.conf.util.{ImageUtil, MapUtil}
+import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
+import cn.piflow.conf.{ConfigurableStop, Port}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -9,8 +13,8 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 class PutMongoDBNsscPerson extends ConfigurableStop{
   override val authorEmail: String = "yit"
   override val description: String = "Put data to mongodb"
-  val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  val outportList: List[String] = List(PortEnum.NonePort.toString)
+  val inportList: List[String] = List(Port.DefaultPort.toString)
+  val outportList: List[String] = List(Port.NonePort.toString)
 
   var ip:String=_
   var port:String=_
@@ -18,7 +22,7 @@ class PutMongoDBNsscPerson extends ConfigurableStop{
   var collection:String=_
 
   override def perform(in: JobInputStream, out: JobOutputStream, pec: JobContext): Unit = {
-    val spark: SparkSession = pec.get[SparkSession]()
+   /* val spark: SparkSession = pec.get[SparkSession]()
     val df: DataFrame = in.read()
     val list = df.schema.fieldNames.toList
     val list1 = List("currentTitle","currentOrganization","workExperience","researchArea")
@@ -126,7 +130,7 @@ class PutMongoDBNsscPerson extends ConfigurableStop{
     })
     val str = "mongodb://" + ip + ":" + port + "/" + dataBase + "." + collection
     MongoSpark.save(value,WriteConfig(Map("spark.mongodb.output.uri"->str)))
-
+*/
   }
 
   override def setProperties(map: Map[String, Any]): Unit = {
@@ -156,7 +160,7 @@ class PutMongoDBNsscPerson extends ConfigurableStop{
   }
 
   override def getGroup(): List[String] = {
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = { }

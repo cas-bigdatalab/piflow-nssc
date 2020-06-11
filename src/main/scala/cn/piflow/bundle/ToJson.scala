@@ -2,7 +2,7 @@ package cn.piflow.bundle
 
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.ImageUtil
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 import org.apache.spark.sql.{DataFrame, SparkSession, functions}
 
@@ -10,8 +10,8 @@ import org.apache.spark.sql.{DataFrame, SparkSession, functions}
 class ToJson extends ConfigurableStop {
   override val authorEmail: String = "yit"
   override val description: String = "to json"
-  override val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  override val outportList: List[String] = List(PortEnum.DefaultPort.toString)
+  override val inportList: List[String] = List(Port.DefaultPort.toString)
+  override val outportList: List[String] = List(Port.DefaultPort.toString)
   //var schema:String = _
   //var column:String = _
 
@@ -33,7 +33,7 @@ class ToJson extends ConfigurableStop {
 
   override def getGroup(): List[String] = {
 
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = {

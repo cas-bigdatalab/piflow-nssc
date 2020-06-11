@@ -7,7 +7,7 @@ import cn.piflow.bundle.bean.Patent
 import cn.piflow.bundle.entity.{Journal, _}
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.{ImageUtil, MapUtil}
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 import com.alibaba.fastjson.JSON
 import org.apache.spark.rdd.RDD
@@ -18,8 +18,8 @@ import org.elasticsearch.spark._
 class PutEsNsscPatent extends ConfigurableStop{
   override val authorEmail: String = "yit"
   override val description: String = "Put data to mongodb"
-  val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  val outportList: List[String] = List(PortEnum.NonePort.toString)
+  val inportList: List[String] = List(Port.DefaultPort.toString)
+  val outportList: List[String] = List(Port.NonePort.toString)
 
   var index:String=_
   var indexTypes:String=_
@@ -546,7 +546,7 @@ class PutEsNsscPatent extends ConfigurableStop{
   }
 
   override def getGroup(): List[String] = {
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = { }

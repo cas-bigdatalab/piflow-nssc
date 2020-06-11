@@ -6,7 +6,7 @@ import cn.piflow.bundle.entity._
 import cn.piflow.bundle.util.Until
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.{ImageUtil, MapUtil}
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 import com.alibaba.fastjson.JSON
 import com.mongodb.BasicDBObject
@@ -19,8 +19,8 @@ import org.bson.Document
 class PutMongoDBNsscProject extends ConfigurableStop{
   override val authorEmail: String = "yit"
   override val description: String = "Put data to mongodb"
-  val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  val outportList: List[String] = List(PortEnum.NonePort.toString)
+  val inportList: List[String] = List(Port.DefaultPort.toString)
+  val outportList: List[String] = List(Port.NonePort.toString)
 
   var ip:String=_
   var port:String=_
@@ -28,7 +28,7 @@ class PutMongoDBNsscProject extends ConfigurableStop{
   var collection:String=_
 
   override def perform(in: JobInputStream, out: JobOutputStream, pec: JobContext): Unit = {
-    val spark: SparkSession = pec.get[SparkSession]()
+  /*  val spark: SparkSession = pec.get[SparkSession]()
     val df: DataFrame = in.read()
     val list = df.schema.fieldNames.toList
     val list1 = List("organization","charge","chineseKeyword","englishKeyword")
@@ -38,6 +38,7 @@ class PutMongoDBNsscProject extends ConfigurableStop{
       val organizationList = new util.ArrayList[BasicDBObject]()
       val chKeyword = new util.ArrayList[String]()
       val ehKeyword = new util.ArrayList[String]()
+
 
 
       val document = new Document()
@@ -104,7 +105,7 @@ class PutMongoDBNsscProject extends ConfigurableStop{
     import com.mongodb.spark._
     val str = "mongodb://" + ip + ":" + port + "/" + dataBase + "." + collection
     MongoSpark.save(value,WriteConfig(Map("spark.mongodb.output.uri"->str)))
-
+*/
   }
 
 
@@ -137,7 +138,7 @@ class PutMongoDBNsscProject extends ConfigurableStop{
   }
 
   override def getGroup(): List[String] = {
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = { }

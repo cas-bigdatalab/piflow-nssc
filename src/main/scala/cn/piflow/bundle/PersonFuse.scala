@@ -2,7 +2,7 @@ package cn.piflow.bundle
 
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.ImageUtil
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 import org.apache.spark.sql.catalyst.encoders.RowEncoder
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
@@ -15,8 +15,8 @@ import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 class PersonFuse extends ConfigurableStop with Serializable {
   override val authorEmail: String = "yit"
   override val description: String = "fuse"
-  override val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  override val outportList: List[String] = List(PortEnum.DefaultPort.toString)
+  override val inportList: List[String] = List(Port.DefaultPort.toString)
+  override val outportList: List[String] = List(Port.DefaultPort.toString)
 
 
   override def setProperties(map: Map[String, Any]): Unit = {
@@ -35,7 +35,7 @@ class PersonFuse extends ConfigurableStop with Serializable {
 
   override def getGroup(): List[String] = {
 
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = {

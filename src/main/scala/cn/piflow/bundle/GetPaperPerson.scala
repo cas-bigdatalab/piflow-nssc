@@ -11,8 +11,8 @@ class GetPaperPerson extends ConfigurableStop with Serializable {
 
   val authorEmail: String = "yit"
   val description: String = "get paper person"
-  val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  val outportList: List[String] = List(PortEnum.DefaultPort.toString)
+  val inportList: List[String] = List(Port.DefaultPort.toString)
+  val outportList: List[String] = List(Port.DefaultPort.toString)
 
   var column:String = _
 
@@ -94,7 +94,7 @@ class GetPaperPerson extends ConfigurableStop with Serializable {
   }
 
   override def getGroup(): List[String] = {
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
 

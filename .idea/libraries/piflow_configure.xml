@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="piflow-configure">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/piflow-configure.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

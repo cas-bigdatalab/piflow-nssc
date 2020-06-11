@@ -2,14 +2,14 @@ package cn.piflow.bundle
 
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.{ImageUtil, MapUtil}
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 
 class DropColumn extends ConfigurableStop{
   override val authorEmail: String = "yit"
   override val description: String = "drop column"
-  override val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  override val outportList: List[String] = List(PortEnum.DefaultPort.toString)
+  override val inportList: List[String] = List(Port.DefaultPort.toString)
+  override val outportList: List[String] = List(Port.DefaultPort.toString)
 
   var column:String=_
   override def setProperties(map: Map[String, Any]): Unit = {
@@ -28,7 +28,7 @@ class DropColumn extends ConfigurableStop{
   }
 
   override def getGroup(): List[String] = {
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = {

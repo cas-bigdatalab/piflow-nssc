@@ -2,7 +2,7 @@ package cn.piflow.bundle
 
 import cn.piflow.conf.bean.PropertyDescriptor
 import cn.piflow.conf.util.{ImageUtil, MapUtil}
-import cn.piflow.conf.{ConfigurableStop, PortEnum, StopGroup}
+import cn.piflow.conf.{ConfigurableStop, Port, StopGroup}
 import cn.piflow.{JobContext, JobInputStream, JobOutputStream, ProcessContext}
 import org.apache.spark.sql.{KeyValueGroupedDataset, Row, SparkSession}
 
@@ -12,8 +12,8 @@ import scala.collection.mutable.ArrayBuffer
 class CastStop extends ConfigurableStop {
   override val authorEmail: String = "yit"
   override val description: String = "cast"
-  override val inportList: List[String] = List(PortEnum.DefaultPort.toString)
-  override val outportList: List[String] = List(PortEnum.DefaultPort.toString)
+  override val inportList: List[String] = List(Port.DefaultPort.toString)
+  override val outportList: List[String] = List(Port.DefaultPort.toString)
   var schema:String = _
   var mold:String = _
 
@@ -38,7 +38,7 @@ class CastStop extends ConfigurableStop {
 
   override def getGroup(): List[String] = {
 
-    List(StopGroup.NsscGroup.toString)
+    List("")
   }
 
   override def initialize(ctx: ProcessContext): Unit = {
